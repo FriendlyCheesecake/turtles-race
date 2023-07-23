@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Unity.Netcode;
 
-public class ScriptTurtle : MonoBehaviour
+public class ScriptTurtle : NetworkBehaviour
 {
     public Rigidbody2D myRigidbody;
     public float upMove;
@@ -16,6 +17,8 @@ public class ScriptTurtle : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!Application.isFocused) return;
+
         if (Input.GetKeyDown(KeyCode.UpArrow))
         {
             transform.position += new Vector3(0, 0.2f, 0);
